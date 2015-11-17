@@ -1,11 +1,18 @@
 class RelationshipsController < ApplicationController
+  def index
+    @relationships = Relationship.all
+  end
+  def show
+    @relationship = Relationship.find(params[:id])
+    end
+
   # POST /relationships
   # POST /relationships.json
   def create
     @relationship = current_user.relationships.build(:friend_id => params[:friend_id])
   if @relationship.save
     flash[:notice] = "Followed successfully."
-    redirect_to profile_path(current_user.id)
+    redirect_to :back
   else
     flash[:notice] = "Unable to follow."
     redirect_to root_path

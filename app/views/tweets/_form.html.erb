@@ -11,11 +11,10 @@
     </div>
   <% end %>
 
-     <div class="field">
-    <%= f.label :message %><br>
-    <%= f.text_field :message %>
-  </div>
   <div class="field">
+    <%= f.text_area :message, placeholder: "What's on your mind", class: "form-control" %>
+  </div>
+  <div class="field hidden">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id, value: current_user.id %>
   </div>

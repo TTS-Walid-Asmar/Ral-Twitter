@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   get "profiles" => "profiles#index"
 
-  resources :tweets
+  get "feed" => "profiles#feed"
+
+  resources :tweets do
+    resource :like
+  end
+
   resources :relationships
 
   root "tweets#index"
